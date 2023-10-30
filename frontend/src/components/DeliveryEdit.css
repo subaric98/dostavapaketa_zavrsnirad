@@ -1,0 +1,49 @@
+.delivery-short-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .delete-delivery {
+    cursor: pointer;
+    color: red;
+    text-decoration: underline;
+  }
+  
+  .edit-delivery-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+  
+  .edit-delivery-form label {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .edit-delivery-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+
+  .edit-delivery-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .edit-delivery-form button:hover {
+    background-color: #0056b3;
+  }
+
+  

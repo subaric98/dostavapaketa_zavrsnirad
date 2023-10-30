@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: Dostava API
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /dostava:
+    get:
+      summary: Get all deliveries
+      operationId: dostavaGET
+      responses:
+        "200":
+          description: A list of deliveries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dostava'
+                x-content-type: application/json
+      x-swagger-router-controller: Default
+    post:
+      summary: Create a new delivery
+      operationId: dostavaPOST
+      requestBody:
+        description: Delivery details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dostava'
+      responses:
+        "201":
+          description: The created delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dostava'
+      x-swagger-router-controller: Default
+  /dostava/{id}:
+    get:
+      summary: Get a delivery by ID
+      operationId: dostavaIdGET
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the delivery to retrieve
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: The requested delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dostava'
+        "404":
+          description: Delivery not found
+      x-swagger-router-controller: Default
+    put:
+      summary: Update a delivery by ID
+      operationId: dostavaIdPUT
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the delivery to update
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      requestBody:
+        description: Updated delivery details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dostava'
+      responses:
+        "200":
+          description: The updated delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dostava'
+        "404":
+          description: Delivery not found
+      x-swagger-router-controller: Default
+    delete:
+      summary: Delete a delivery by ID
+      operationId: dostavaIdDELETE
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the delivery to delete
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Delivery deleted
+        "404":
+          description: Delivery not found
+      x-swagger-router-controller: Default
+components:
+  schemas:
+    Dostava:
+      required:
+        - adresa_dostave
+        - broj_paketa
+        - datum_dostave
+        - dostavljac
+        - status_paketa
+        - vozilo
+      type: object
+      properties:
+        sifra:
+          type: integer
+          format: int64
+        broj_paketa:
+          type: integer
+        adresa_dostave:
+          type: string
+        datum_dostave:
+          type: string
+          format: date
+        status_paketa:
+          type: integer
+        dostavljac:
+          type: integer
+        vozilo:
+          type: integer
+      example:
+        datum_dostave: 2000-01-23
+        adresa_dostave: adresa_dostave
+        status_paketa: 5
+        vozilo: 2
+        dostavljac: 5
+        broj_paketa: 1
